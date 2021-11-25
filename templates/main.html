@@ -1,0 +1,109 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHRONIC KIDNEY DISEASE</title>
+
+
+    <!-- BootStrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+    <!-- css -->
+    <link rel="stylesheet" href="static/css/external.css">
+
+
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">CHRONIC KIDNEY DISEASE</a>
+        </div>
+    </div>
+  </nav>
+  <div class="bg-img">
+    <div class="container" >
+      <form action="\predict" method="post">
+        <!--<h1>Prediction</h1>-->
+        <div class="single-row">
+          <div class="single-column">
+            <h5 class="card-title">Name</h5>
+            <input type="text" name="name" id="name" required="required">
+          </div>
+          <div class="single-column">
+            <h5 class="card-title">Email Id</h5>
+            <input type="text" name="eid" id="eid" required="required">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="single-row">
+            <div class="single-column">
+              <h5 class="card-title">Phone number</h5>
+              <input type="number" name="phn" id="phn" required="required">
+            </div>
+            <div class="single-column">
+              <h5 class="card-title">Age</h5>
+              <input type="number" name="age" id="age" required="required">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="single-row">
+            <div class="single-column">
+              <h5 class="card-title">Sugar value</h5>
+              <input type="number" name="sg" id="sg" step="0.001"required="required">
+            </div>
+            <div class="single-column">
+              <h5 class="card-title">Alcohol value </h5>
+              <input type="number" name="al" id="al" step="0.001" required="required">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="single-row">
+            <div class="single-column">
+              <h5 class="card-title">Serum creatinine value </h5>
+              <input type="number" name="sc" id="sc" step="0.001" required="required">
+            </div>
+            <div class="single-column">
+              <h5 class="card-title">Packed cell volume </h5>
+              <input type="number" name="pcv" id="pcv" step="0.001" required="required">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="cen">
+            <h5 class="card-title">Hypertension value </h5>
+            <input type="number" name="htn" id="htn" step="0.001" required="required">
+          </div>
+        </div>
+        <!--<button type="submit" class="btn">Login</button>-->
+        <button type="submit" class="btn" style="color: white;"> Submit </button>
+          <h3 style="color: white;">{{ res }}</h3>
+          <h3 style="color: white;">{{ res1 }}</h3>
+      </form>
+    </div>
+  </div>
+  <footer>
+    <p>©2021 Developed By LOKESHWAR SAI SREERAMDAS, V SHIVA SAI KRISHNA, V ARAVIND KUMAR (Team Lead)<br>
+    <!--<a href="mailto:hege@example.com">hege@example.com</a>--></p>
+  </footer>
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

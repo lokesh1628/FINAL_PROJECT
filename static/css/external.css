@@ -1,0 +1,154 @@
+body,
+html {
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+.bg-img {
+  /* The image used */
+  /*background-image: url("images/kidney.jpg");
+
+  min-height: 380px;*/
+
+  /* Center and scale the image nicely */
+  /* background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;*/
+  background-image: url("kidney.jpg");
+  height: 120%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /*position: relative;*/
+}
+
+/* Add styles to the form container */
+/*.container {
+  position: absolute;
+  right: 0;
+  margin: 20px;
+  max-width: 300px;
+  padding: 16px;
+  background-color: white;
+}*/
+
+/* Full-width input fields */
+/*input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  background-color: #ddd;
+  outline: none;
+}*/
+
+.container {
+  position: absolute;
+  right: 0;
+  margin: 0;
+  max-width: 600px;
+  padding: 40px;
+  background-color: #21888c;
+  text-align: center;
+  text-justify: right;
+}
+
+input[type="number"] {
+  width: 90%;
+  padding: 5px;
+  margin: 3px 0 20px 0;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type="text"] {
+  width: 90%;
+  padding: 5px;
+  margin: 3px 0 20px 0;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type="text"]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.single-row {
+  width: 100%;
+}
+.single-column {
+  width: 50%;
+  float: left;
+}
+.cen {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/*.row {
+  position: absolute;
+  margin: 40px;
+  right: 0;
+  max-width: 800px;
+  padding: 16px;
+  background-color: #57a9a9;
+  text-align: center;
+  text-justify: center;
+}
+.row1 {
+  position: absolute;
+  margin: 100px;
+  right: 0;
+  max-width: 800px;
+  padding: 16px;
+  background-color: #57a9a9;
+  text-align: center;
+  text-justify: center;
+}*/
+
+/* Set a style for the submit button */
+.btn {
+  background-color: black;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+
+.navbar {
+  background-color: #333333;
+}
+
+a {
+  color: #f1f9f9;
+}
+
+a:hover {
+  color: #f0f0f0;
+}
+
+footer {
+  text-align: center;
+  background-color: #333333;
+  color: white;
+}

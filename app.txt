@@ -1,0 +1,112 @@
+from flask import Flask, request, render_template,redirect,url_for
+from flask_cors import cross_origin
+from flask_sqlalchemy import SQLAlchemy
+import tensorflow as tf
+import numpy as np
+import smtplib
+
+app = Flask(__name__)
+app.secret_key= "Secret Key"
+model = tf.keras.models.load_model('Kidney.h5')
+
+app.config['SQLALCHEMY DATABASE_URI'] = 'mysql://root:''@localhost/finalyear'
+app.config['SQLALCHEMY TRACK_MODIFICATIONS'] = False
+
+
+db = SQLAlchemy(app)
+
+class Data(db.model):
+    id = db.column(db.Integer,primary_Key = True)
+    name = db.column(db.String(100))
+    phn=db.column(db.number(10))
+    eid = db.column(db.String(100))
+    age = db.column(db.integer(100))
+    sg = db.column(db.float(100))
+    al = db.column(db.float(100))
+    sc = db.column(db.float(100))
+    pcv = db.column(db.float(100))
+    htn = db.column(db.float(100))
+
+
+    def __init__(self,id,name,phn,eid,age,sg,al,sc,pcv,htn):
+        self.name = name
+        self.phn = phn
+        self.eid = eid
+        self. age = age
+        self.sg = sg
+        self.al = al
+        self .sc = sc
+        self.pcv = pcv
+        self.htn = htn
+
+
+
+@app.route("/")
+@cross_origin()
+def home():
+    return render_template("home.html")
+
+@app.route("/predict", methods=["GET", "POST"])
+@cross_origin()
+def predict():
+    if request.method == "POST":
+
+        # getting data
+
+        name = request.form['name']
+        phn = request.form['phn']
+        eid = request.form['eid']
+        age = request.form['age']
+        sg = request.form["sg"]
+        al = request.form["al"]
+        sc = request.form["sc"]
+        pcv = request.form["pcv"]
+        htn = request.form["htn"]
+
+        my_data = Data(name, phn, eid, age, sg, al, sc, pcv, htn)
+        db.session.add(my_data)
+        db.session.commit()
+
+        print(sg,al,sc,pcv,htn)
+        l = [sg, al, sc, pcv, htn]
+        l = np.array(l)
+        l = l.reshape(1, -1)
+        l = [[float(sg), float(al), float(sc), float(pcv), float(htn)]]
+        inp = model.predict(l)
+        #return render_template('home.html', prediction_text = "FINAL REPORT {}".format(inp))
+        with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
+            smtp.ehlo()
+            smtp.starttls()
+            smtp.ehlo()
+            # smtp.login(user_info[0], user_info[1])
+            if (inp < 0.5):
+                print("CKD")
+                subject = f'Cronic Kidney Disease Predictor'
+                content = f'FINAL REPORT HAVING CKD'
+
+                msg = f'Subject: {subject}\n\n{content}'
+
+            else:
+                print("Non-CKD")
+                subject = f'Cronic Kidney Disease Predictor'
+                content = f'FINAL REPORT HAVING NON-CKD'
+
+                msg = f'Subject: {subject}\n\n{content}'
+
+            smtp.close()
+
+
+        if (inp < 0.5):
+            print("CKD")
+            prediction_text = "FINAL REPORT HAVING CKD"
+            return render_template('home.html',res=prediction_text)
+        else:
+            print("Non-CKD")
+            prediction_text = "FINAL REPORT HAVING NON-CKD"
+            return render_template('home.html', res=prediction_text)
+
+    return render_template("home.html")
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
